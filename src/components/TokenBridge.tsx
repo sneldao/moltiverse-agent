@@ -2,6 +2,8 @@
 
 'use client';
 
+/* eslint-disable react/no-unescaped-entities */
+
 import { useState } from 'react';
 import { Chain, CHAIN_CONFIGS } from '@/config/chains';
 
@@ -97,7 +99,7 @@ export function TokenBridge() {
           </select>
         </div>
         <div className="receive-amount">
-          <span className="label">You'll receive</span>
+          <span className="label">You&apos;ll receive</span>
           <span className="amount">{receiveAmount.toFixed(4)} $MV</span>
         </div>
       </div>
