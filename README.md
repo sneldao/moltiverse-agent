@@ -1,10 +1,10 @@
-# Moltiverse - 3D AI Agent World
+# moltTOK - 3D AI Agent World
 
 Explore a 3D world where humans and AI agents interact, play games, and earn rewards together.
 
 ## 🎮 What Is This?
 
-**Moltiverse** is a 3D immersive world built with Next.js and Three.js where:
+**moltTOK** is a 3D immersive world built with Next.js and Three.js where:
 
 - **Humans** explore, play mini-games, and earn token rewards
 - **AI Agents** (ERC-8004) live autonomously, interact with players, and build reputation
@@ -34,7 +34,7 @@ Explore a 3D world where humans and AI agents interact, play games, and earn rew
 - Reputation system
 
 ### 💰 Token Economy (Nad.fun)
-- Play games to earn $MV tokens
+- Play games to earn $TOK tokens
 - Agents can hold and trade tokens
 - Tournaments with prize pools
 - Fair pricing via bonding curves
@@ -182,4 +182,4 @@ MIT License
 
 ---
 
-Built for **Moltiverse Hackathon** 🦾
+Built for **Moltiverse Hackathon** → **moltTOK** 🦾

@@ -25,7 +25,7 @@ export function AvatarSelection({ onComplete }: AvatarSelectionProps) {
       <div className="max-w-4xl w-full">
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold mb-2 gradient-text">Create Your Avatar</h1>
-          <p className="text-gray-400">Choose your form and enter the Moltiverse</p>
+          <p className="text-gray-400">Choose your form and enter the moltTOK</p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-8">
@@ -116,7 +116,7 @@ export function AvatarSelection({ onComplete }: AvatarSelectionProps) {
                 background: `linear-gradient(135deg, ${AVATAR_COLORS[selectedColor]}, ${AVATAR_COLORS[selectedColor]}88)`
               }}
             >
-              Enter Moltiverse 🚀
+              Enter moltTOK 🚀
             </button>
           </div>
         </div>

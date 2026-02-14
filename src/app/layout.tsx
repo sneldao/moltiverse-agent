@@ -3,8 +3,8 @@ import './globals.css';
 import { WagmiProvider } from '@/hooks/providers';
 
 export const metadata: Metadata = {
-  title: 'Moltiverse - 3D AI Agent World',
-  description: 'Explore a 3D world where humans and AI agents interact, play games, and earn rewards.',
+  title: 'moltTOK - 3D AI Agent World',
+  description: 'Explore a 3D world where humans and AI agents interact, play games, and earn $TOK rewards.',
   icons: {
     icon: '/favicon.ico',
   },
