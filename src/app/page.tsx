@@ -5,6 +5,15 @@ import World3D from '@/world/World3D';
 import { AvatarSelection } from '@/components/AvatarSelection';
 import { AvatarConfig, DEFAULT_AVATAR } from '@/world/avatar';
 import { GameType } from '@/games/types';
+import { useWalletState, connectWallet } from '@/hooks/useWallet';
+
+// Token Utility imports
+import { TokenProvider } from '@/games/TokenContext';
+import { PlayToEarnHUD } from '@/games/PlayToEarnHUD';
+import { StakingPanel } from '@/games/StakingPanel';
+import { Leaderboard } from '@/games/Leaderboard';
+import { TokenEconomy } from '@/games/TokenEconomy';
+import { QuestSystem } from '@/games/QuestSystem';
 
 // Components
 function Badge({ children, color = 'gray' }: { children: React.ReactNode; color?: 'cyan' | 'green' | 'red' | 'yellow' | 'purple' | 'gray' }) {
@@ -24,16 +33,9 @@ function Badge({ children, color = 'gray' }: { children: React.ReactNode; color?
   );
 }
 
-function Card({ children, className = '' }: { children: React.ReactNode; className?: string }) {
-  return (
-    <div className={`glass card p-6 ${className}`}>
-      {children}
-    </div>
-  );
-}
-
 // Token balance display
-function TokenBalance({ balance }: { balance: number }) {
+function TokenBalance({ balance }: { balance: bigint }) {
+  const formattedBalance = Number(balance) / 1e18;
   return (
     <div className="glass px-4 py-2 rounded-xl flex items-center gap-3">
       <div className="w-8 h-8 rounded-full bg-gradient-to-br from-amber-500 to-orange-500 flex items-center justify-center">
@@ -41,7 +43,7 @@ function TokenBalance({ balance }: { balance: number }) {
       </div>
       <div>
         <p className="text-xs text-gray-400">$MV Balance</p>
-        <p className="text-lg font-mono text-white">{balance.toLocaleString()}</p>
+        <p className="text-lg font-mono text-white">{formattedBalance.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
       </div>
     </div>
   );
@@ -61,46 +63,48 @@ function ControlHints() {
   );
 }
 
-// Main App
-export default function Home() {
+// Inner App component that uses TokenProvider
+function MoltiverseApp() {
   const [mounted, setMounted] = useState(false);
   const [avatar, setAvatar] = useState<AvatarConfig | null>(null);
   const [worldEnabled, setWorldEnabled] = useState(true);
   const [activeGame, setActiveGame] = useState<GameType | null>(null);
-  const [tokenBalance, setTokenBalance] = useState(0);
+  const [tokenBalance, setTokenBalance] = useState(BigInt(0));
   const [showMessage, setShowMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
+  const [tokenAddress, setTokenAddress] = useState<`0x${string}` | null>(null);
+  
+  // Token Utility Panel States
+  const [showP2E, setShowP2E] = useState(false);
+  const [showStaking, setShowStaking] = useState(false);
+  const [showLeaderboard, setShowLeaderboard] = useState(false);
+  const [showTokenEconomy, setShowTokenEconomy] = useState(false);
+  
+  const { isConnected, address } = useWalletState();
 
   useEffect(() => {
     setMounted(true);
   }, []);
 
-  // Handle avatar selection completion
-  const handleAvatarComplete = (selectedAvatar: AvatarConfig) => {
-    setAvatar(selectedAvatar);
-    setWorldEnabled(true);
-    // Welcome bonus
-    setTokenBalance(50);
-    setShowMessage({ type: 'success', text: `Welcome to Moltiverse, ${selectedAvatar.name}! +50 $MV bonus 🎉` });
-    setTimeout(() => setShowMessage(null), 5000);
-  };
-
-  // Handle entering a game
-  const handleEnterGame = (gameType: GameType) => {
-    setActiveGame(gameType);
-    setShowMessage({ type: 'success', text: `Entering ${gameType}...` });
-    setTimeout(() => setShowMessage(null), 2000);
-  };
-
-  // Handle zone unlock
-  const handleUnlockZone = (zoneId: string, cost: number) => {
-    if (tokenBalance >= cost) {
-      setTokenBalance(tokenBalance - cost);
-      setShowMessage({ type: 'success', text: `Zone ${zoneId} unlocked! -${cost} $MV` });
-      setTimeout(() => setShowMessage(null), 3000);
-    } else {
-      setShowMessage({ type: 'error', text: `Not enough $MV! Need ${cost} $MV` });
-      setTimeout(() => setShowMessage(null), 3000);
+  useEffect(() => {
+    if (isConnected && address && tokenAddress) {
+      loadTokenBalance();
     }
+  }, [isConnected, address, tokenAddress]);
+
+  async function loadTokenBalance() {
+    // Token balance is now managed by TokenProvider
+    // This is a placeholder for future real contract integration
+    if (!tokenAddress || !address) return;
+    try {
+      // const balance = await getTokenBalance(tokenAddress, address);
+      // setTokenBalance(balance);
+    } catch (error) {
+      console.error('Error loading token balance:', error);
+    }
+  }
+
+  const handleAvatarComplete = (selected: AvatarConfig) => {
+    setAvatar(selected);
   };
 
   if (!mounted) {
@@ -118,14 +122,45 @@ export default function Home() {
     );
   }
 
-  // Avatar selection screen
   if (!avatar) {
     return <AvatarSelection onComplete={handleAvatarComplete} />;
   }
 
-  // Main world view
   return (
     <div className="min-h-screen bg-[#020617] text-white">
+      {/* Quest System - Always visible */}
+      <QuestSystem />
+
+      {/* Token Utility Modals */}
+      {showP2E && (
+        <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50" onClick={() => setShowP2E(false)}>
+          <div className="max-w-2xl w-full mx-4 max-h-[80vh] overflow-y-auto" onClick={e => e.stopPropagation()}>
+            <PlayToEarnHUD />
+          </div>
+        </div>
+      )}
+      {showStaking && (
+        <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50" onClick={() => setShowStaking(false)}>
+          <div className="max-w-lg w-full mx-4 max-h-[80vh] overflow-y-auto" onClick={e => e.stopPropagation()}>
+            <StakingPanel />
+          </div>
+        </div>
+      )}
+      {showLeaderboard && (
+        <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50" onClick={() => setShowLeaderboard(false)}>
+          <div className="max-w-lg w-full mx-4 max-h-[80vh] overflow-y-auto" onClick={e => e.stopPropagation()}>
+            <Leaderboard />
+          </div>
+        </div>
+      )}
+      {showTokenEconomy && (
+        <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50" onClick={() => setShowTokenEconomy(false)}>
+          <div className="max-w-lg w-full mx-4 max-h-[80vh] overflow-y-auto" onClick={e => e.stopPropagation()}>
+            <TokenEconomy />
+          </div>
+        </div>
+      )}
+
       {/* Toast Messages */}
       {showMessage && (
         <div className={`fixed top-20 right-4 z-50 px-4 py-3 rounded-xl glass ${
@@ -150,6 +185,33 @@ export default function Home() {
             </div>
 
             <div className="flex items-center gap-4">
+              {/* Token Utility Buttons */}
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={() => { setShowP2E(true); setShowStaking(false); setShowLeaderboard(false); setShowTokenEconomy(false); }}
+                  className="glass px-3 py-1.5 rounded-lg text-xs font-medium text-green-400 hover:text-green-300 hover:bg-green-500/10 transition-colors flex items-center gap-1"
+                >
+                  <span>🎮</span> P2E
+                </button>
+                <button
+                  onClick={() => { setShowStaking(true); setShowP2E(false); setShowLeaderboard(false); setShowTokenEconomy(false); }}
+                  className="glass px-3 py-1.5 rounded-lg text-xs font-medium text-purple-400 hover:text-purple-300 hover:bg-purple-500/10 transition-colors flex items-center gap-1"
+                >
+                  <span>🔒</span> Stake
+                </button>
+                <button
+                  onClick={() => { setShowLeaderboard(true); setShowP2E(false); setShowStaking(false); setShowTokenEconomy(false); }}
+                  className="glass px-3 py-1.5 rounded-lg text-xs font-medium text-yellow-400 hover:text-yellow-300 hover:bg-yellow-500/10 transition-colors flex items-center gap-1"
+                >
+                  <span>🏆</span> Rankings
+                </button>
+                <button
+                  onClick={() => { setShowTokenEconomy(true); setShowP2E(false); setShowStaking(false); setShowLeaderboard(false); }}
+                  className="glass px-3 py-1.5 rounded-lg text-xs font-medium text-cyan-400 hover:text-cyan-300 hover:bg-cyan-500/10 transition-colors flex items-center gap-1"
+                >
+                  <span>📈</span> Trade
+                </button>
+              </div>
               <TokenBalance balance={tokenBalance} />
               <div className="flex items-center gap-2">
                 <span className="text-sm text-gray-400">Playing as:</span>
@@ -172,7 +234,7 @@ export default function Home() {
           enabled={worldEnabled}
           gameType={activeGame}
           onScore={(points) => {
-            setTokenBalance(tokenBalance + points);
+            setTokenBalance(prev => prev + BigInt(points));
             setShowMessage({ type: 'success', text: `+${points} $MV earned!` });
             setTimeout(() => setShowMessage(null), 2000);
           }}
@@ -212,5 +274,14 @@ export default function Home() {
         </div>
       </footer>
     </div>
+  );
+}
+
+// Export default wrapped in TokenProvider
+export default function Home() {
+  return (
+    <TokenProvider>
+      <MoltiverseApp />
+    </TokenProvider>
   );
 }
