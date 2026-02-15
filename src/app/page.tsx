@@ -243,6 +243,32 @@ function MoltiverseApp() {
         {/* Control Hints */}
         {!activeGame && <ControlHints />}
 
+        {/* Game Selector Floating Button */}
+        {!activeGame && (
+          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-30">
+            <div className="flex items-center gap-2 glass rounded-full px-4 py-2">
+              <button
+                onClick={() => setActiveGame('tetris')}
+                className="px-3 py-1 rounded-lg bg-green-500/20 text-green-400 text-xs font-medium hover:bg-green-500/30 transition-colors"
+              >
+                🧱 Tetris
+              </button>
+              <button
+                onClick={() => setActiveGame('racing')}
+                className="px-3 py-1 rounded-lg bg-red-500/20 text-red-400 text-xs font-medium hover:bg-red-500/30 transition-colors"
+              >
+                🏎 Racing
+              </button>
+              <button
+                onClick={() => setActiveGame('battle')}
+                className="px-3 py-1 rounded-lg bg-purple-500/20 text-purple-400 text-xs font-medium hover:bg-purple-500/30 transition-colors"
+              >
+                ⚔️ Battle
+              </button>
+            </div>
+          </div>
+        )}
+
         {/* Game overlay when playing */}
         {activeGame && (
           <div className="absolute top-4 left-4 right-4 flex justify-between items-center pointer-events-none">
