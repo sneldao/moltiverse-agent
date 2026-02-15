@@ -151,6 +151,7 @@ function MoltiverseApp() {
   const [showTokenEconomy, setShowTokenEconomy] = useState(false);
   const [selectedAgent, setSelectedAgent] = useState<{name: string; specialty: string; rate: string} | null>(null);
   const [showFriends, setShowFriends] = useState(false);
+  const [showShop, setShowShop] = useState(false);
   
   const { isConnected, address } = useWalletState();
 
@@ -246,6 +247,33 @@ function MoltiverseApp() {
         <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50" onClick={() => setShowTokenEconomy(false)}>
           <div className="max-w-lg w-full mx-4 max-h-[80vh] overflow-y-auto" onClick={e => e.stopPropagation()}>
             <TokenEconomy />
+          </div>
+        </div>
+      )}
+      {showShop && (
+        <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50" onClick={() => setShowShop(false)}>
+          <div className="max-w-md w-full mx-4 glass border border-orange-500/30 rounded-2xl p-6" onClick={e => e.stopPropagation()}>
+            <div className="flex items-center justify-between mb-6">
+              <h2 className="text-xl font-bold text-white">🛒 Item Shop</h2>
+              <button onClick={() => setShowShop(false)} className="text-gray-400 hover:text-white">✕</button>
+            </div>
+            <div className="grid grid-cols-2 gap-4">
+              {[
+                { icon: '🎩', name: 'VIP Hat', price: 500, desc: 'Exclusive headwear' },
+                { icon: '⚡', name: 'Speed Boost', price: 200, desc: 'Move 2x faster' },
+                { icon: '🛡️', name: 'Shield', price: 300, desc: 'Protect tokens' },
+                { icon: '💎', name: 'Gem', price: 1000, desc: 'Rare collectible' },
+                { icon: '🔑', name: 'Key', price: 750, desc: 'Unlock secrets' },
+                { icon: '🎰', name: 'Loot Box', price: 400, desc: 'Random reward' },
+              ].map((item, i) => (
+                <div key={i} className="glass border border-gray-700/50 p-3 rounded-xl text-center hover:border-orange-500/50 transition-colors cursor-pointer">
+                  <div className="text-3xl mb-1">{item.icon}</div>
+                  <p className="text-sm font-bold text-white">{item.name}</p>
+                  <p className="text-xs text-gray-400">{item.desc}</p>
+                  <p className="text-sm text-orange-400 mt-2">{item.price} $MV</p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       )}
@@ -370,7 +398,7 @@ function MoltiverseApp() {
                 <span>👥</span> Friends (3)
               </button>
               <button
-                onClick={() => setShowMessage({ type: 'success', text: '🛒 Shop coming soon!' })}
+                onClick={() => setShowShop(true)}
                 className="text-sm text-orange-400 hover:text-orange-300 transition-colors flex items-center gap-1"
               >
                 <span>🛒</span> Shop
