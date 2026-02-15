@@ -369,6 +369,12 @@ function MoltiverseApp() {
               >
                 <span>👥</span> Friends (3)
               </button>
+              <button
+                onClick={() => setShowMessage({ type: 'success', text: '🛒 Shop coming soon!' })}
+                className="text-sm text-orange-400 hover:text-orange-300 transition-colors flex items-center gap-1"
+              >
+                <span>🛒</span> Shop
+              </button>
             </div>
           </div>
         </div>
