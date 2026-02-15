@@ -532,6 +532,12 @@ function MoltiverseApp() {
               >
                 ⚙️
               </button>
+              <button
+                onClick={() => setShowMessage({ type: 'success', text: '📖 Tutorial: Use WASD to move, E to interact, Space to jump!' })}
+                className="text-sm text-blue-400 hover:text-blue-300 transition-colors"
+              >
+                ❓
+              </button>
             </div>
           </div>
         </div>
