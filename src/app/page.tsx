@@ -650,6 +650,12 @@ function MoltiverseApp() {
         {!activeGame && <ControlHints />}
         {!activeGame && <SoundControls />}
         {!activeGame && <MiniMap />}
+        {!activeGame && (
+          <div className="absolute top-36 left-4 glass px-3 py-2 rounded-xl pointer-events-none">
+            <p className="text-[10px] text-gray-400">Weather</p>
+            <p className="text-sm">🌙 Clear Night</p>
+          </div>
+        )}
 
         {/* Game Selector Floating Button */}
         {!activeGame && (
