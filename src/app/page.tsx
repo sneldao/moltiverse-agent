@@ -156,6 +156,7 @@ function MoltiverseApp() {
   const [showGuild, setShowGuild] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
   const [notifications, setNotifications] = useState(3);
+  const [showQuickActions, setShowQuickActions] = useState(false);
   const [showCreateAgent, setShowCreateAgent] = useState(false);
   const [showShare, setShowShare] = useState(false);
   
@@ -671,6 +672,12 @@ function MoltiverseApp() {
               >
                 ⚔️ Battle
               </button>
+              <button
+                onClick={() => setShowQuickActions(!showQuickActions)}
+                className="px-3 py-1 rounded-lg bg-yellow-500/20 text-yellow-400 text-xs font-medium hover:bg-yellow-500/30 transition-colors"
+              >
+                ⚡ Actions
+              </button>
             </div>
           </div>
         )}
@@ -715,6 +722,21 @@ function MoltiverseApp() {
           </div>
         </div>
       </footer>
+
+      {/* Quick Actions Popup */}
+      {showQuickActions && (
+        <div className="fixed bottom-24 right-4 z-40">
+          <div className="glass border border-yellow-500/30 bg-black/80 px-4 py-3 rounded-xl min-w-[160px]">
+            <p className="text-xs text-yellow-400 mb-2">⚡ Quick Actions</p>
+            <div className="space-y-2">
+              <button onClick={() => setShowMessage({type:'success',text:'💰 Sent 50 $MV to CryptoKing'})} className="w-full text-left text-xs text-gray-300 hover:text-white py-1">💸 Send Tokens</button>
+              <button onClick={() => setShowMessage({type:'success',text:'🎮 Joined Tetris room'})} className="w-full text-left text-xs text-gray-300 hover:text-white py-1">🎯 Quick Join</button>
+              <button onClick={() => setShowMessage({type:'success',text:'📦 Claimed daily rewards!'})} className="w-full text-left text-xs text-gray-300 hover:text-white py-1">📦 Daily Rewards</button>
+              <button onClick={() => setShowGuild(true)} className="w-full text-left text-xs text-gray-300 hover:text-white py-1">⚔️ Guild Battle</button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
