@@ -706,6 +706,7 @@ function MoltiverseApp() {
             <p className="text-[10px] text-purple-400 mt-1">🔮 9 Spells</p>
             <p className="text-[10px] text-yellow-400 mt-1">💀 3 Deaths</p>
             <p className="text-[10px] text-red-400 mt-1">⚔️ 156 Kills</p>
+            <p className="text-[10px] text-green-400 mt-1">🏆 89 Wins</p>
             <p className="text-[10px] text-amber-400 mt-1">💰 12,450 $MV</p>
           </div>
         )}
