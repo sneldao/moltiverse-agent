@@ -152,6 +152,7 @@ function MoltiverseApp() {
   const [selectedAgent, setSelectedAgent] = useState<{name: string; specialty: string; rate: string} | null>(null);
   const [showFriends, setShowFriends] = useState(false);
   const [showShop, setShowShop] = useState(false);
+  const [showInventory, setShowInventory] = useState(false);
   
   const { isConnected, address } = useWalletState();
 
@@ -287,6 +288,44 @@ function MoltiverseApp() {
         </div>
       )}
 
+      {/* Inventory Modal */}
+      {showInventory && (
+        <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50" onClick={() => setShowInventory(false)}>
+          <div className="max-w-md w-full mx-4 glass border border-purple-500/30 rounded-2xl p-6" onClick={e => e.stopPropagation()}>
+            <div className="flex items-center justify-between mb-6">
+              <h2 className="text-xl font-bold text-white">🎒 Inventory</h2>
+              <button onClick={() => setShowInventory(false)} className="text-gray-400 hover:text-white">✕</button>
+            </div>
+            <div className="space-y-3">
+              <div className="glass border border-gray-700/50 p-3 rounded-xl flex items-center gap-3">
+                <span className="text-2xl">🎩</span>
+                <div>
+                  <p className="text-sm font-bold text-white">VIP Hat</p>
+                  <p className="text-xs text-gray-400">Exclusive headwear</p>
+                </div>
+                <span className="ml-auto text-xs bg-purple-500/20 text-purple-400 px-2 py-1 rounded">Equipped</span>
+              </div>
+              <div className="glass border border-gray-700/50 p-3 rounded-xl flex items-center gap-3">
+                <span className="text-2xl">⚡</span>
+                <div>
+                  <p className="text-sm font-bold text-white">Speed Boost</p>
+                  <p className="text-xs text-gray-400">Active for 24h</p>
+                </div>
+                <span className="ml-auto text-xs bg-green-500/20 text-green-400 px-2 py-1 rounded">Active</span>
+              </div>
+              <div className="glass border border-gray-700/50 p-3 rounded-xl flex items-center gap-3">
+                <span className="text-2xl">💎</span>
+                <div>
+                  <p className="text-sm font-bold text-white">Gem Collection</p>
+                  <p className="text-xs text-gray-400">3/10 collected</p>
+                </div>
+              </div>
+            </div>
+            <p className="text-xs text-gray-500 mt-4 text-center">Storage: 3/20 items</p>
+          </div>
+        </div>
+      )}
+
       {/* Achievement Popup */}
       <AchievementPopup />
 
@@ -402,6 +441,12 @@ function MoltiverseApp() {
                 className="text-sm text-orange-400 hover:text-orange-300 transition-colors flex items-center gap-1"
               >
                 <span>🛒</span> Shop
+              </button>
+              <button
+                onClick={() => setShowInventory(true)}
+                className="text-sm text-purple-400 hover:text-purple-300 transition-colors flex items-center gap-1"
+              >
+                <span>🎒</span> Inventory
               </button>
             </div>
           </div>
