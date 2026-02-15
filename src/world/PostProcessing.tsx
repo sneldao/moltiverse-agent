@@ -4,7 +4,7 @@
 'use client';
 
 import { EffectComposer, Bloom, ChromaticAberration, Vignette, Noise } from '@react-three/postprocessing';
-import { BlendFunction, KernelSize } from 'postprocessing';
+import { BlendFunction, KernelSize, Vector2 } from 'postprocessing';
 import { useRef, useState, useEffect, ReactElement } from 'react';
 import { Canvas } from '@react-three/fiber';
 
@@ -39,7 +39,7 @@ export function WorldPostProcessing({
   if (chromaticAberration) {
     effects.push(<ChromaticAberration
       key="ca"
-      offset={[0.002 * intensity, 0.002 * intensity] as [number, number]}
+      offset={new Vector2(0.002 * intensity, 0.002 * intensity)}
       radialModulation={false}
       modulationOffset={0}
     />);
@@ -107,7 +107,7 @@ export function DramaticEffect({ active = false }: { active?: boolean }) {
         mipmapBlur
       />
       <ChromaticAberration
-        offset={active ? [0.005, 0.005] as [number, number] : [0.001, 0.001] as [number, number]}
+        offset={new Vector2(active ? 0.005 : 0.001, active ? 0.005 : 0.001)}
         radialModulation={false}
         modulationOffset={0}
       />
@@ -131,7 +131,7 @@ export function NightVision({ active = false }: { active?: boolean }) {
         mipmapBlur
       />
       <ChromaticAberration
-        offset={active ? [0.003, 0.003] as [number, number] : [0.001, 0.001] as [number, number]}
+        offset={new Vector2(active ? 0.003 : 0.001, active ? 0.003 : 0.001)}
         radialModulation={false}
         modulationOffset={0}
       />
