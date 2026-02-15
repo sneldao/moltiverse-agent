@@ -84,6 +84,30 @@ function MiniMap() {
   );
 }
 
+// Achievement Popup Component
+function AchievementPopup() {
+  const [achievement, setAchievement] = useState<{title: string; desc: string; icon: string} | null>(null);
+  
+  useEffect(() => {
+    const timer = setTimeout(() => setAchievement({ title: 'First Steps', desc: 'Explore the world', icon: '👣' }), 5000);
+    const timer2 = setTimeout(() => setAchievement(null), 8000);
+    return () => { clearTimeout(timer); clearTimeout(timer2); };
+  }, []);
+  
+  if (!achievement) return null;
+  
+  return (
+    <div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 animate-bounce">
+      <div className="glass border-2 border-yellow-500/50 bg-yellow-900/20 px-6 py-4 rounded-2xl text-center">
+        <div className="text-4xl mb-2">{achievement.icon}</div>
+        <p className="text-yellow-400 font-bold text-lg">Achievement Unlocked!</p>
+        <p className="text-white font-semibold">{achievement.title}</p>
+        <p className="text-gray-400 text-sm">{achievement.desc}</p>
+      </div>
+    </div>
+  );
+}
+
 // Inner App component that uses TokenProvider
 function MoltiverseApp() {
   const [mounted, setMounted] = useState(false);
@@ -190,6 +214,9 @@ function MoltiverseApp() {
           {showMessage.text}
         </div>
       )}
+
+      {/* Achievement Popup */}
+      <AchievementPopup />
 
       {/* Header */}
       <header className="fixed top-0 left-0 right-0 z-40 glass border-b border-gray-800/50">
