@@ -153,6 +153,7 @@ function MoltiverseApp() {
   const [showFriends, setShowFriends] = useState(false);
   const [showShop, setShowShop] = useState(false);
   const [showInventory, setShowInventory] = useState(false);
+  const [showGuild, setShowGuild] = useState(false);
   
   const { isConnected, address } = useWalletState();
 
@@ -326,6 +327,50 @@ function MoltiverseApp() {
         </div>
       )}
 
+      {/* Guild Modal */}
+      {showGuild && (
+        <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50" onClick={() => setShowGuild(false)}>
+          <div className="max-w-md w-full mx-4 glass border border-red-500/30 rounded-2xl p-6" onClick={e => e.stopPropagation()}>
+            <div className="flex items-center justify-between mb-6">
+              <h2 className="text-xl font-bold text-white">⚔️ Guild</h2>
+              <button onClick={() => setShowGuild(false)} className="text-gray-400 hover:text-white">✕</button>
+            </div>
+            <div className="space-y-4">
+              <div className="glass border border-red-500/30 p-4 rounded-xl">
+                <div className="flex items-center gap-3 mb-2">
+                  <span className="text-2xl">🐉</span>
+                  <div>
+                    <p className="font-bold text-white">Crypto Dragons</p>
+                    <p className="text-xs text-gray-400">Level 5 Guild • 12/50 members</p>
+                  </div>
+                </div>
+                <div className="flex gap-2 mt-3">
+                  <button className="text-xs bg-red-600/50 hover:bg-red-600 text-white px-3 py-1 rounded">Chat</button>
+                  <button className="text-xs bg-gray-700 hover:bg-gray-600 text-white px-3 py-1 rounded">Leave</button>
+                </div>
+              </div>
+              <p className="text-xs text-gray-400">Nearby Guilds</p>
+              <div className="space-y-2">
+                <div className="glass border border-gray-700/50 p-3 rounded-xl flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <span>🦁</span>
+                    <span className="text-sm text-gray-300">Lion Alliance</span>
+                  </div>
+                  <button className="text-xs text-cyan-400 hover:text-cyan-300">Join</button>
+                </div>
+                <div className="glass border border-gray-700/50 p-3 rounded-xl flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <span>🐺</span>
+                    <span className="text-sm text-gray-300">Wolf Pack</span>
+                  </div>
+                  <button className="text-xs text-cyan-400 hover:text-cyan-300">Join</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Achievement Popup */}
       <AchievementPopup />
 
@@ -447,6 +492,12 @@ function MoltiverseApp() {
                 className="text-sm text-purple-400 hover:text-purple-300 transition-colors flex items-center gap-1"
               >
                 <span>🎒</span> Inventory
+              </button>
+              <button
+                onClick={() => setShowGuild(true)}
+                className="text-sm text-red-400 hover:text-red-300 transition-colors flex items-center gap-1"
+              >
+                <span>⚔️</span> Guild
               </button>
             </div>
           </div>
