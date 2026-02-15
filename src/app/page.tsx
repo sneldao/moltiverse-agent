@@ -655,6 +655,7 @@ function MoltiverseApp() {
             <p className="text-[10px] text-gray-400">Weather</p>
             <p className="text-sm">🌙 Clear Night</p>
             <p className="text-[10px] text-green-400 mt-1">● Server: Online</p>
+            <p className="text-[10px] text-purple-400 mt-1">🏆 Season 1 Active</p>
           </div>
         )}
 
