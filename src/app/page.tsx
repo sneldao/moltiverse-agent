@@ -63,6 +63,31 @@ function ControlHints() {
   );
 }
 
+// Sound Controls Component
+function SoundControls() {
+  const [muted, setMuted] = useState(false);
+  const [musicOn, setMusicOn] = useState(true);
+  
+  return (
+    <div className="absolute top-20 right-4 glass px-3 py-2 rounded-xl flex gap-2 mt-2">
+      <button
+        onClick={() => setMuted(!muted)}
+        className={`p-2 rounded-lg transition-colors ${muted ? 'bg-red-500/20 text-red-400' : 'bg-green-500/20 text-green-400'}`}
+        title={muted ? 'Unmute' : 'Mute'}
+      >
+        {muted ? '🔇' : '🔊'}
+      </button>
+      <button
+        onClick={() => setMusicOn(!musicOn)}
+        className={`p-2 rounded-lg transition-colors ${musicOn ? 'bg-purple-500/20 text-purple-400' : 'bg-gray-600/20 text-gray-500'}`}
+        title={musicOn ? 'Music On' : 'Music Off'}
+      >
+        🎵
+      </button>
+    </div>
+  );
+}
+
 // Mini-map showing nearby agents
 function MiniMap() {
   const agents = [
@@ -349,6 +374,7 @@ function MoltiverseApp() {
 
         {/* Control Hints */}
         {!activeGame && <ControlHints />}
+        {!activeGame && <SoundControls />}
         {!activeGame && <MiniMap />}
 
         {/* Game Selector Floating Button */}
