@@ -709,6 +709,7 @@ function MoltiverseApp() {
             <p className="text-[10px] text-green-400 mt-1">🏆 89 Wins</p>
             <p className="text-[10px] text-yellow-400 mt-1">🍀 12 Luck</p>
             <p className="text-[10px] text-purple-400 mt-1">⚡ 45 Speed</p>
+            <p className="text-[10px] text-red-400 mt-1">💪 78 Strength</p>
             <p className="text-[10px] text-amber-400 mt-1">💰 12,450 $MV</p>
           </div>
         )}
