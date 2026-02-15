@@ -150,6 +150,7 @@ function MoltiverseApp() {
   const [showLeaderboard, setShowLeaderboard] = useState(false);
   const [showTokenEconomy, setShowTokenEconomy] = useState(false);
   const [selectedAgent, setSelectedAgent] = useState<{name: string; specialty: string; rate: string} | null>(null);
+  const [showFriends, setShowFriends] = useState(false);
   
   const { isConnected, address } = useWalletState();
 
@@ -352,10 +353,48 @@ function MoltiverseApp() {
               >
                 Change Avatar
               </button>
+              <button
+                onClick={() => setShowFriends(!showFriends)}
+                className="text-sm text-cyan-400 hover:text-cyan-300 transition-colors flex items-center gap-1"
+              >
+                <span>👥</span> Friends (3)
+              </button>
             </div>
           </div>
         </div>
       </header>
+
+      {/* Friends List Popup */}
+      {showFriends && (
+        <div className="fixed top-24 right-4 z-40">
+          <div className="glass border border-cyan-500/30 bg-black/80 px-4 py-3 rounded-xl min-w-[200px]">
+            <div className="flex items-center justify-between mb-3">
+              <h3 className="font-bold text-white">Friends Online</h3>
+              <button onClick={() => setShowFriends(false)} className="text-gray-400 hover:text-white">✕</button>
+            </div>
+            <div className="space-y-2">
+              <div className="flex items-center gap-2 text-sm">
+                <span className="w-2 h-2 bg-green-400 rounded-full"></span>
+                <span className="text-gray-300">CryptoKing</span>
+                <span className="text-xs text-gray-500 ml-auto">🟢 Online</span>
+              </div>
+              <div className="flex items-center gap-2 text-sm">
+                <span className="w-2 h-2 bg-green-400 rounded-full"></span>
+                <span className="text-gray-300">DeFiDegen</span>
+                <span className="text-xs text-gray-500 ml-auto">🟢 Online</span>
+              </div>
+              <div className="flex items-center gap-2 text-sm">
+                <span className="w-2 h-2 bg-yellow-400 rounded-full"></span>
+                <span className="text-gray-300">NFTCollector</span>
+                <span className="text-xs text-gray-500 ml-auto">🟡 Away</span>
+              </div>
+            </div>
+            <button className="w-full mt-3 text-xs bg-cyan-600/50 hover:bg-cyan-600 py-2 rounded-lg transition-colors text-cyan-300">
+              + Invite Friend
+            </button>
+          </div>
+        </div>
+      )}
 
       {/* Event Banner */}
       <div className="fixed top-16 left-0 right-0 z-35 flex justify-center pointer-events-none">
