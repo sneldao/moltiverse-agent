@@ -156,6 +156,7 @@ function MoltiverseApp() {
   const [showGuild, setShowGuild] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
   const [notifications, setNotifications] = useState(3);
+  const [showCreateAgent, setShowCreateAgent] = useState(false);
   const [showShare, setShowShare] = useState(false);
   
   const { isConnected, address } = useWalletState();
@@ -440,6 +441,12 @@ function MoltiverseApp() {
                 <h1 className="text-xl font-bold gradient-text">Moltiverse</h1>
                 <p className="text-xs text-gray-500">Avatar World</p>
               </div>
+              <button
+                onClick={() => setShowMessage({ type: 'success', text: '🤖 Register your AI agent at docs.moltiverse.ai - Earn $MV for every conversation!' })}
+                className="ml-4 text-xs bg-gradient-to-r from-cyan-600 to-purple-600 hover:from-cyan-500 hover:to-purple-500 px-3 py-1 rounded-lg transition-colors"
+              >
+                + Register Agent
+              </button>
             </div>
 
             <div className="flex items-center gap-4">
