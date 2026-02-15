@@ -142,6 +142,7 @@ function MoltiverseApp() {
   const [tokenBalance, setTokenBalance] = useState(BigInt(0));
   const [showMessage, setShowMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
   const [tokenAddress, setTokenAddress] = useState<`0x${string}` | null>(null);
+  const [dailyBonus, setDailyBonus] = useState<{day: number; claimed: boolean} | null>(null);
   
   // Token Utility Panel States
   const [showP2E, setShowP2E] = useState(false);
@@ -154,6 +155,12 @@ function MoltiverseApp() {
 
   useEffect(() => {
     setMounted(true);
+  }, []);
+
+  // Daily Bonus Popup
+  useEffect(() => {
+    const timer = setTimeout(() => setDailyBonus({ day: 3, claimed: false }), 3000);
+    return () => clearTimeout(timer);
   }, []);
 
   useEffect(() => {
@@ -243,6 +250,31 @@ function MoltiverseApp() {
 
       {/* Achievement Popup */}
       <AchievementPopup />
+
+      {/* Daily Bonus Popup */}
+      {dailyBonus && !dailyBonus.claimed && (
+        <div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50">
+          <div className="glass border-2 border-orange-500/50 bg-gradient-to-b from-orange-900/40 to-purple-900/40 px-8 py-6 rounded-2xl text-center animate-pulse">
+            <div className="text-5xl mb-3">🎁</div>
+            <p className="text-orange-400 font-bold text-xl mb-1">Daily Bonus!</p>
+            <p className="text-gray-300 mb-4">Day {dailyBonus.day} • 100 $MV</p>
+            <div className="flex gap-2 justify-center">
+              <button
+                onClick={() => { setTokenBalance(prev => prev + BigInt(100000000000000000000n)); setShowMessage({ type: 'success', text: '+100 $MV claimed!' }); setDailyBonus({ ...dailyBonus, claimed: true }); }}
+                className="bg-orange-600 hover:bg-orange-500 text-white font-bold px-6 py-2 rounded-xl transition-colors"
+              >
+                Claim Now
+              </button>
+              <button
+                onClick={() => setDailyBonus({ ...dailyBonus, claimed: true })}
+                className="glass text-gray-400 hover:text-white px-4 py-2 rounded-xl transition-colors"
+              >
+                Later
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Header */}
       <header className="fixed top-0 left-0 right-0 z-40 glass border-b border-gray-800/50">
