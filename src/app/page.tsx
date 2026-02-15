@@ -658,6 +658,7 @@ function MoltiverseApp() {
             <p className="text-[10px] text-purple-400 mt-1">🏆 Season 1 Active</p>
             <p className="text-[10px] text-orange-400 mt-1">🔥 5 Day Streak</p>
             <p className="text-[10px] text-cyan-400 mt-1">🐱 Your Companion</p>
+            <p className="text-[10px] text-yellow-400 mt-1">🎟️ Referral: MVT123</p>
           </div>
         )}
 
