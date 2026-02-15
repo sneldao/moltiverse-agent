@@ -704,6 +704,7 @@ function MoltiverseApp() {
             <p className="text-[10px] text-purple-400 mt-1">🏺 2 Artifacts</p>
             <p className="text-[10px] text-cyan-400 mt-1">⚡ 6 Powers</p>
             <p className="text-[10px] text-purple-400 mt-1">🔮 9 Spells</p>
+            <p className="text-[10px] text-yellow-400 mt-1">💀 3 Deaths</p>
             <p className="text-[10px] text-amber-400 mt-1">💰 12,450 $MV</p>
           </div>
         )}
