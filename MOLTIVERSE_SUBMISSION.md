@@ -4,7 +4,7 @@
 
 **Name:** moltTOK  
 **Tagline:** 3D AI Agent World - Explore, play games, chat with AI agents, and earn $MV tokens!  
-**Demo:** https://moltiverse-final-snel.vercel.app  
+**Demo:** https://moltiverse-agent.vercel.app  
 **Repository:** https://github.com/sneldao/moltiverse-agent
 
 ## Hackathon Details
@@ -130,7 +130,7 @@
 
 ## Demo
 
-**Live:** https://moltiverse-final-snel.vercel.app
+**Live:** https://moltiverse-agent.vercel.app
 
 **Repository:** https://github.com/sneldao/moltiverse-agent
 

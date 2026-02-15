@@ -70,7 +70,7 @@ export default function World3D({ enabled, gameType, onScore }: World3DProps) {
   const envSettings = getEnvironmentSettings();
 
   return (
-    <div className="relative w-full h-[600px] rounded-2xl overflow-hidden border border-gray-800/50">
+    <div className="relative w-full h-[calc(100vh-64px)] rounded-2xl overflow-hidden border border-gray-800/50">
       <Canvas shadows dpr={[1, 2]}>
         <PerspectiveCamera makeDefault position={cameraSettings.position} fov={cameraSettings.fov} />
         
