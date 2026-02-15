@@ -7,7 +7,6 @@ import { EffectComposer, Bloom, ChromaticAberration, Vignette, Noise } from '@re
 import { BlendFunction, KernelSize } from 'postprocessing';
 import { useRef, useState, useEffect, ReactElement } from 'react';
 import { Canvas } from '@react-three/fiber';
-import { Vector2 } from 'three';
 
 interface PostProcessingProps {
   bloom?: boolean;
@@ -40,8 +39,7 @@ export function WorldPostProcessing({
   if (chromaticAberration) {
     effects.push(<ChromaticAberration
       key="ca"
-      blendFunction={BlendFunction.NORMAL}
-      offset={new Vector2(0.002 * intensity, 0.002 * intensity)}
+      offset={[0.002 * intensity, 0.002 * intensity] as [number, number]}
     />);
   }
   
@@ -107,8 +105,7 @@ export function DramaticEffect({ active = false }: { active?: boolean }) {
         mipmapBlur
       />
       <ChromaticAberration
-        blendFunction={BlendFunction.NORMAL}
-        offset={active ? new Vector2(0.005, 0.005) : new Vector2(0.001, 0.001)}
+        offset={active ? [0.005, 0.005] as [number, number] : [0.001, 0.001] as [number, number]}
       />
       <Vignette
         offset={active ? 0.4 : 0.3}
@@ -130,8 +127,7 @@ export function NightVision({ active = false }: { active?: boolean }) {
         mipmapBlur
       />
       <ChromaticAberration
-        blendFunction={BlendFunction.NORMAL}
-        offset={active ? new Vector2(0.003, 0.003) : new Vector2(0.001, 0.001)}
+        offset={active ? [0.003, 0.003] as [number, number] : [0.001, 0.001] as [number, number]}
       />
       <Noise
         premultiply
