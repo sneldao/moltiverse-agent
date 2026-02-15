@@ -733,6 +733,7 @@ function MoltiverseApp() {
             <p className="text-[10px] text-cyan-400 mt-1">🌀 3 Teleport</p>
             <p className="text-[10px] text-purple-400 mt-1">👁️ 2 Stealth</p>
             <p className="text-[10px] text-red-400 mt-1">💢 45 Rage</p>
+            <p className="text-[10px] text-yellow-400 mt-1">⭐ 2.5x XP</p>
             <p className="text-[10px] text-cyan-400 mt-1">🏃 1500 Speed</p>
             <p className="text-[10px] text-amber-400 mt-1">💰 12,450 $MV</p>
           </div>
