@@ -213,6 +213,23 @@ function MoltiverseApp() {
                 </button>
               </div>
               <TokenBalance balance={tokenBalance} />
+              {/* Player XP & Level */}
+              <div className="flex items-center gap-3 glass px-3 py-1.5 rounded-xl">
+                <div className="text-center">
+                  <p className="text-[10px] text-gray-400 uppercase">Level</p>
+                  <p className="text-sm font-bold text-yellow-400">🔥 12</p>
+                </div>
+                <div className="w-px h-6 bg-gray-600" />
+                <div className="text-center">
+                  <p className="text-[10px] text-gray-400 uppercase">XP</p>
+                  <p className="text-sm font-bold text-cyan-400">⭐ 4,850</p>
+                </div>
+                <div className="w-px h-6 bg-gray-600" />
+                <div className="text-center">
+                  <p className="text-[10px] text-gray-400 uppercase">Rank</p>
+                  <p className="text-sm font-bold text-purple-400">#247</p>
+                </div>
+              </div>
               <div className="flex items-center gap-2">
                 <span className="text-sm text-gray-400">Playing as:</span>
                 <Badge color="cyan">{avatar.name}</Badge>
