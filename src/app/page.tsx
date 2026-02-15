@@ -207,6 +207,16 @@ function MoltiverseApp() {
 
   return (
     <div className="min-h-screen bg-[#020617] text-white">
+      {/* Current Objectives Widget */}
+      <div className="fixed top-24 left-4 z-30 glass border-l-2 border-yellow-500/50 px-3 py-2 rounded-r-lg">
+        <p className="text-[10px] text-yellow-400 uppercase tracking-wider mb-1">Current Objective</p>
+        <p className="text-sm text-white">🤝 Talk to an agent</p>
+        <div className="mt-1 h-1 bg-gray-700 rounded-full overflow-hidden">
+          <div className="h-full bg-yellow-500 w-1/3 rounded-full"></div>
+        </div>
+        <p className="text-[10px] text-gray-500 mt-1">0/3 completed</p>
+      </div>
+
       {/* Quest System - Always visible */}
       <QuestSystem />
 
