@@ -673,6 +673,7 @@ function MoltiverseApp() {
             <p className="text-[10px] text-yellow-400 mt-1">🏆 15 Achievements</p>
             <p className="text-[10px] text-green-400 mt-1">🌟 VIP Level 5</p>
             <p className="text-[10px] text-red-400 mt-1">❤️ 5 Hearts</p>
+            <p className="text-[10px] text-purple-400 mt-1">🦊 Pet: Luna</p>
             <p className="text-[10px] text-amber-400 mt-1">💰 12,450 $MV</p>
           </div>
         )}
