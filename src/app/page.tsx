@@ -682,6 +682,7 @@ function MoltiverseApp() {
             <p className="text-[10px] text-purple-400 mt-1">🎫 6 Tickets</p>
             <p className="text-[10px] text-orange-400 mt-1">⚔️ 12 Battles</p>
             <p className="text-[10px] text-cyan-400 mt-1">🏅 9 Ranks</p>
+            <p className="text-[10px] text-yellow-400 mt-1">👑 4 Titles</p>
             <p className="text-[10px] text-amber-400 mt-1">💰 12,450 $MV</p>
           </div>
         )}
