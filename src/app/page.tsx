@@ -266,6 +266,16 @@ function MoltiverseApp() {
         </div>
       </header>
 
+      {/* Event Banner */}
+      <div className="fixed top-16 left-0 right-0 z-35 flex justify-center pointer-events-none">
+        <div className="glass bg-gradient-to-r from-purple-900/80 to-cyan-900/80 border-y border-purple-500/30 px-6 py-2 flex items-center gap-4 animate-pulse">
+          <span className="text-lg">🎉</span>
+          <span className="text-sm font-medium">Weekly Tournament starts in 2 days!</span>
+          <span className="text-xs text-purple-300">• Prize Pool: 10,000 $MV</span>
+          <button className="pointer-events-auto text-xs bg-purple-600 hover:bg-purple-500 px-3 py-1 rounded-lg transition-colors">Join Now</button>
+        </div>
+      </div>
+
       {/* Main 3D World */}
       <main className="relative z-10 pt-20">
         <World3D
