@@ -748,6 +748,7 @@ function MoltiverseApp() {
             <p className="text-[10px] text-yellow-400 mt-1">🎭 5 Steal</p>
             <p className="text-[10px] text-cyan-400 mt-1">🩸 7 Drain</p>
             <p className="text-[10px] text-purple-400 mt-1">💋 4 Charm</p>
+            <p className="text-[10px] text-yellow-400 mt-1">👻 6 Fear</p>
             <p className="text-[10px] text-purple-400 mt-1">🏦 8 Bank</p>
             <p className="text-[10px] text-cyan-400 mt-1">🏃 1500 Speed</p>
             <p className="text-[10px] text-amber-400 mt-1">💰 12,450 $MV</p>
