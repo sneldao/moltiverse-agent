@@ -40,3 +40,156 @@ coverage/
 *.pem
 *.key
 .vercel
+
+# ========================================
+# SECURITY & SECRETS (HIGH PRIORITY)
+# ========================================
+# Never commit secrets, tokens, or credentials
+*.env.*
+.env*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*.crt
+*.cer
+*.der
+secrets/
+secrets.json
+credentials/
+.secrets/
+
+# GitHub tokens and API keys
+github_pat_*
+*_token
+*_secret
+*_api_key
+*.credentials
+
+# ========================================
+# AGENT & AI SYSTEM FILES
+# ========================================
+# Agent memory, state, and configuration
+agent_memory/
+.agent/
+agent_state/
+agent_logs/
+*.agent.json
+memory.json
+state.json
+agent-*.db
+agent-*.sqlite
+.composio/
+.mcp/
+
+# AI model weights and cache
+models/
+*.ckpt
+*.pt
+*.pth
+*.safetensors
+.cache/
+huggingface/
+
+# ========================================
+# BUILD ARTIFACTS & TEMP FILES
+# ========================================
+# Next.js
+.next/
+out/
+build/
+dist/
+*.tsbuildinfo
+
+# TypeScript
+*.d.ts.map
+*.js.map
+
+# Dependencies
+node_modules/
+.pnp/
+.pnp.js
+.yarn/
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+
+# Testing
+coverage/
+.nyc_output/
+*.lcov
+test-results/
+playwright-report/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Temporary files
+*.tmp
+*.temp
+.tmp/
+.temp/
+*.cache
+.cache/
+.parcel-cache/
+
+# ========================================
+# DEVELOPMENT & IDE
+# ========================================
+.vscode/
+.idea/
+*.swp
+*.swo
+*.swn
+.DS_Store
+Thumbs.db
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# ========================================
+# BLOCKCHAIN & WEB3
+# ========================================
+# Contract artifacts (keep ABIs, ignore build outputs)
+artifacts/
+cache/
+typechain-types/
+deployments/*/solcInputs/
+broadcast/
+
+# Hardhat
+.hardhat/
+hardhat.log
+
+# ========================================
+# PLATFORM SPECIFIC
+# ========================================
+.vercel
+.netlify/
+.firebase/
+.amplify/
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# ========================================
+# DOCUMENTATION BUILDS
+# ========================================
+.docusaurus/
+.vuepress/dist/
+.jekyll-cache/
+_site/
