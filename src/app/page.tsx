@@ -123,6 +123,7 @@ function MoltiverseApp() {
   const [showStaking, setShowStaking] = useState(false);
   const [showLeaderboard, setShowLeaderboard] = useState(false);
   const [showTokenEconomy, setShowTokenEconomy] = useState(false);
+  const [selectedAgent, setSelectedAgent] = useState<{name: string; specialty: string; rate: string} | null>(null);
   
   const { isConnected, address } = useWalletState();
 
@@ -278,10 +279,16 @@ function MoltiverseApp() {
                   <p className="text-sm font-bold text-purple-400">#247</p>
                 </div>
               </div>
-              <div className="flex items-center gap-2">
+                <div className="flex items-center gap-2">
                 <span className="text-sm text-gray-400">Playing as:</span>
                 <Badge color="cyan">{avatar.name}</Badge>
               </div>
+              <button
+                onClick={() => setSelectedAgent({ name: 'DeFi Agent', specialty: 'Yield Farming Expert', rate: '0.5 $MV' })}
+                className="text-sm text-cyan-400 hover:text-cyan-300 transition-colors"
+              >
+                Test Agent Chat
+              </button>
               <button
                 onClick={() => setAvatar(null)}
                 className="text-sm text-gray-400 hover:text-white transition-colors"
@@ -302,6 +309,31 @@ function MoltiverseApp() {
           <button className="pointer-events-auto text-xs bg-purple-600 hover:bg-purple-500 px-3 py-1 rounded-lg transition-colors">Join Now</button>
         </div>
       </div>
+
+      {/* Agent Interaction Panel */}
+      {selectedAgent && (
+        <div className="fixed bottom-24 left-1/2 -translate-x-1/2 z-40 animate-slide-up">
+          <div className="glass border border-cyan-500/30 bg-black/80 px-5 py-4 rounded-2xl min-w-[280px]">
+            <div className="flex items-start gap-4">
+              <div className="w-12 h-12 rounded-full bg-gradient-to-br from-cyan-500 to-purple-500 flex items-center justify-center text-2xl">
+                🤖
+              </div>
+              <div className="flex-1">
+                <div className="flex items-center justify-between">
+                  <h3 className="font-bold text-white">{selectedAgent.name}</h3>
+                  <button onClick={() => setSelectedAgent(null)} className="text-gray-400 hover:text-white">✕</button>
+                </div>
+                <p className="text-cyan-400 text-sm">{selectedAgent.specialty}</p>
+                <div className="flex items-center gap-3 mt-2">
+                  <span className="text-xs text-gray-400">Rate: {selectedAgent.rate}/min</span>
+                  <button className="text-xs bg-cyan-600 hover:bg-cyan-500 px-3 py-1 rounded-lg transition-colors">Chat</button>
+                  <button className="text-xs bg-purple-600 hover:bg-purple-500 px-3 py-1 rounded-lg transition-colors">Trade</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Main 3D World */}
       <main className="relative z-10 pt-20">
