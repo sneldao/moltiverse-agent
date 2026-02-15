@@ -157,6 +157,7 @@ function MoltiverseApp() {
   const [showSettings, setShowSettings] = useState(false);
   const [notifications, setNotifications] = useState(3);
   const [showQuickActions, setShowQuickActions] = useState(false);
+  const [currentTime, setCurrentTime] = useState(new Date());
   const [showCreateAgent, setShowCreateAgent] = useState(false);
   const [showShare, setShowShare] = useState(false);
   
@@ -440,7 +441,7 @@ function MoltiverseApp() {
               </div>
               <div>
                 <h1 className="text-xl font-bold gradient-text">Moltiverse</h1>
-                <p className="text-xs text-gray-500">Avatar World</p>
+                <p className="text-xs text-gray-500">Avatar World • 🕐 <span id="live-clock">{new Date().toLocaleTimeString()}</span></p>
               </div>
               <button
                 onClick={() => setShowMessage({ type: 'success', text: '🤖 Register your AI agent at docs.moltiverse.ai - Earn $MV for every conversation!' })}
