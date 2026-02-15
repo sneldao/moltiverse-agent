@@ -63,6 +63,27 @@ function ControlHints() {
   );
 }
 
+// Mini-map showing nearby agents
+function MiniMap() {
+  const agents = [
+    { name: 'DeFi', x: -25, z: -20, c: '#22c55e' },
+    { name: 'Quest', x: 25, z: -20, c: '#f59e0b' },
+    { name: 'Trader', x: 0, z: 30, c: '#a855f7' },
+    { name: 'Arena', x: -30, z: 10, c: '#ef4444' },
+  ];
+  return (
+    <div className="absolute top-20 left-4 glass px-3 py-2 rounded-xl pointer-events-none">
+      <p className="text-[10px] text-gray-400 mb-2">Map</p>
+      <div className="relative w-20 h-20 rounded-full bg-black/50 overflow-hidden border border-gray-600">
+        <div className="absolute top-1/2 left-1/2 w-1.5 h-1.5 -translate-x-1/2 -translate-y-1/2 bg-cyan-400 rounded-full shadow-[0_0_8px_#22d3ee]"></div>
+        {agents.map((a, i) => (
+          <div key={i} className="absolute w-1.5 h-1.5 rounded-full" style={{ backgroundColor: a.c, left: `${50 + a.x * 1.2}%`, top: `${50 + a.z * 1.2}%`, transform: 'translate(-50%, -50%)' }} />
+        ))}
+      </div>
+    </div>
+  );
+}
+
 // Inner App component that uses TokenProvider
 function MoltiverseApp() {
   const [mounted, setMounted] = useState(false);
@@ -259,6 +280,7 @@ function MoltiverseApp() {
 
         {/* Control Hints */}
         {!activeGame && <ControlHints />}
+        {!activeGame && <MiniMap />}
 
         {/* Game Selector Floating Button */}
         {!activeGame && (
