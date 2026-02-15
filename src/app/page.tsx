@@ -692,6 +692,7 @@ function MoltiverseApp() {
             <p className="text-[10px] text-cyan-400 mt-1">📆 Monthly in 15d</p>
             <p className="text-[10px] text-yellow-400 mt-1">🏆 Season in 30d</p>
             <p className="text-[10px] text-purple-400 mt-1">🎪 8 Events</p>
+            <p className="text-[10px] text-cyan-400 mt-1">🔨 5 Crafts</p>
             <p className="text-[10px] text-amber-400 mt-1">💰 12,450 $MV</p>
           </div>
         )}
