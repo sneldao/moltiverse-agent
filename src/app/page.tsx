@@ -156,6 +156,7 @@ function MoltiverseApp() {
   const [showGuild, setShowGuild] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
   const [notifications, setNotifications] = useState(3);
+  const [showShare, setShowShare] = useState(false);
   
   const { isConnected, address } = useWalletState();
 
@@ -545,6 +546,12 @@ function MoltiverseApp() {
               >
                 🔔
                 {notifications > 0 && <span className="absolute -top-1 -right-1 w-4 h-4 bg-red-500 text-white text-[10px] rounded-full flex items-center justify-center">{notifications}</span>}
+              </button>
+              <button
+                onClick={() => setShowMessage({ type: 'success', text: '🔗 Share link copied! Invite your friends to Moltiverse 🌌' })}
+                className="text-sm text-green-400 hover:text-green-300 transition-colors"
+              >
+                📤
               </button>
             </div>
           </div>
