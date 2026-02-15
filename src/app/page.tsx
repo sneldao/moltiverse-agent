@@ -155,6 +155,7 @@ function MoltiverseApp() {
   const [showInventory, setShowInventory] = useState(false);
   const [showGuild, setShowGuild] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
+  const [notifications, setNotifications] = useState(3);
   
   const { isConnected, address } = useWalletState();
 
@@ -537,6 +538,13 @@ function MoltiverseApp() {
                 className="text-sm text-blue-400 hover:text-blue-300 transition-colors"
               >
                 ❓
+              </button>
+              <button
+                onClick={() => setShowMessage({ type: 'success', text: '🔔 3 new notifications: Guild invite, Friend request, Daily bonus!' })}
+                className="text-sm text-yellow-400 hover:text-yellow-300 transition-colors relative"
+              >
+                🔔
+                {notifications > 0 && <span className="absolute -top-1 -right-1 w-4 h-4 bg-red-500 text-white text-[10px] rounded-full flex items-center justify-center">{notifications}</span>}
               </button>
             </div>
           </div>
