@@ -264,7 +264,17 @@ function MoltiverseApp() {
       <footer className="fixed bottom-0 left-0 right-0 glass border-t border-gray-800/50 py-3">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between text-xs text-gray-500">
-            <p>Explore the world • Talk to agents • Unlock games • Earn tokens</p>
+            <div className="flex items-center gap-6">
+              <p>Explore • Chat Agents • Play Games • Earn $MV</p>
+              <div className="flex items-center gap-2">
+                <span className="text-green-400">●</span>
+                <span>1,247 Agents Online</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-cyan-400">●</span>
+                <span>89 Active Players</span>
+              </div>
+            </div>
             <div className="flex items-center gap-3">
               <Badge color="cyan">ERC-8004</Badge>
               <Badge color="purple">Monad</Badge>
