@@ -154,6 +154,7 @@ function MoltiverseApp() {
   const [showShop, setShowShop] = useState(false);
   const [showInventory, setShowInventory] = useState(false);
   const [showGuild, setShowGuild] = useState(false);
+  const [showSettings, setShowSettings] = useState(false);
   
   const { isConnected, address } = useWalletState();
 
@@ -371,6 +372,32 @@ function MoltiverseApp() {
         </div>
       )}
 
+      {/* Settings Modal */}
+      {showSettings && (
+        <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50" onClick={() => setShowSettings(false)}>
+          <div className="max-w-sm w-full mx-4 glass border border-gray-600/50 rounded-2xl p-6" onClick={e => e.stopPropagation()}>
+            <div className="flex items-center justify-between mb-6">
+              <h2 className="text-xl font-bold text-white">⚙️ Settings</h2>
+              <button onClick={() => setShowSettings(false)} className="text-gray-400 hover:text-white">✕</button>
+            </div>
+            <div className="space-y-4">
+              <div className="flex items-center justify-between">
+                <span className="text-gray-300">Music</span>
+                <button className="w-12 h-6 bg-green-600 rounded-full relative"><span className="absolute right-1 top-1 w-4 h-4 bg-white rounded-full"></span></button>
+              </div>
+              <div className="flex items-center justify-between">
+                <span className="text-gray-300">Sound Effects</span>
+                <button className="w-12 h-6 bg-green-600 rounded-full relative"><span className="absolute right-1 top-1 w-4 h-4 bg-white rounded-full"></span></button>
+              </div>
+              <div className="flex items-center justify-between">
+                <span className="text-gray-300">Quality</span>
+                <select className="bg-gray-800 text-white text-sm rounded px-2 py-1"><option>High</option><option>Low</option></select>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Achievement Popup */}
       <AchievementPopup />
 
@@ -498,6 +525,12 @@ function MoltiverseApp() {
                 className="text-sm text-red-400 hover:text-red-300 transition-colors flex items-center gap-1"
               >
                 <span>⚔️</span> Guild
+              </button>
+              <button
+                onClick={() => setShowSettings(true)}
+                className="text-sm text-gray-400 hover:text-white transition-colors flex items-center gap-1"
+              >
+                ⚙️
               </button>
             </div>
           </div>
