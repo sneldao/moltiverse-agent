@@ -40,6 +40,8 @@ export function WorldPostProcessing({
     effects.push(<ChromaticAberration
       key="ca"
       offset={[0.002 * intensity, 0.002 * intensity] as [number, number]}
+      radialModulation={false}
+      modulationOffset={0}
     />);
   }
   
@@ -106,6 +108,8 @@ export function DramaticEffect({ active = false }: { active?: boolean }) {
       />
       <ChromaticAberration
         offset={active ? [0.005, 0.005] as [number, number] : [0.001, 0.001] as [number, number]}
+        radialModulation={false}
+        modulationOffset={0}
       />
       <Vignette
         offset={active ? 0.4 : 0.3}
@@ -128,6 +132,8 @@ export function NightVision({ active = false }: { active?: boolean }) {
       />
       <ChromaticAberration
         offset={active ? [0.003, 0.003] as [number, number] : [0.001, 0.001] as [number, number]}
+        radialModulation={false}
+        modulationOffset={0}
       />
       <Noise
         premultiply
