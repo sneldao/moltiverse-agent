@@ -40,6 +40,12 @@ export default function ImmersiveWorld({
           <div className="loading-content">
             <div className="loading-spinner">🌌</div>
             <div className="loading-text">Entering Moltiverse...</div>
+            <div className="loading-tips">
+              <p className="text-xs text-gray-400">💡 Use WASD to explore</p>
+              <p className="text-xs text-gray-400">🎮 Press Space to jump</p>
+              <p className="text-xs text-gray-400">🤖 Chat with AI agents</p>
+              <p className="text-xs text-gray-400">🎯 Play games to earn $MV</p>
+            </div>
           </div>
         </div>
       )}
@@ -216,6 +222,17 @@ export default function ImmersiveWorld({
           margin-top: 16px;
           font-size: 18px;
           color: #8b5cf6;
+        }
+        .loading-tips {
+          margin-top: 24px;
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+          animation: fadeIn 1s ease-in 0.5s both;
+        }
+        @keyframes fadeIn {
+          from { opacity: 0; transform: translateY(10px); }
+          to { opacity: 1; transform: translateY(0); }
         }
         .world-hud {
           position: absolute;
