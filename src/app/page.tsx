@@ -714,6 +714,7 @@ function MoltiverseApp() {
             <p className="text-[10px] text-yellow-400 mt-1">💰 2.5M Net Worth</p>
             <p className="text-[10px] text-cyan-400 mt-1">🌟 500 Prestige</p>
             <p className="text-[10px] text-purple-400 mt-1">👑 6 Titles</p>
+            <p className="text-[10px] text-yellow-400 mt-1">💥 92% Dominance</p>
             <p className="text-[10px] text-amber-400 mt-1">💰 12,450 $MV</p>
           </div>
         )}
