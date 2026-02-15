@@ -4,7 +4,8 @@
 'use client';
 
 import { EffectComposer, Bloom, ChromaticAberration, Vignette, Noise } from '@react-three/postprocessing';
-import { BlendFunction, KernelSize, Vector2 } from 'postprocessing';
+import { BlendFunction, KernelSize } from 'postprocessing';
+import { Vector2 } from 'three';
 import { useRef, useState, useEffect, ReactElement } from 'react';
 import { Canvas } from '@react-three/fiber';
 
