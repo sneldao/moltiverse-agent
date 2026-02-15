@@ -677,6 +677,7 @@ function MoltiverseApp() {
             <p className="text-[10px] text-blue-400 mt-1">🎮 28 Games</p>
             <p className="text-[10px] text-green-400 mt-1">🌍 Region: US-West</p>
             <p className="text-[10px] text-yellow-400 mt-1">🎁 2 Gifts</p>
+            <p className="text-[10px] text-cyan-400 mt-1">📊 5 Quests</p>
             <p className="text-[10px] text-amber-400 mt-1">💰 12,450 $MV</p>
           </div>
         )}
