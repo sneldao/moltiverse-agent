@@ -711,6 +711,7 @@ function MoltiverseApp() {
             <p className="text-[10px] text-purple-400 mt-1">⚡ 45 Speed</p>
             <p className="text-[10px] text-red-400 mt-1">💪 78 Strength</p>
             <p className="text-[10px] text-cyan-400 mt-1">🧠 65 Intel</p>
+            <p className="text-[10px] text-yellow-400 mt-1">💰 2.5M Net Worth</p>
             <p className="text-[10px] text-amber-400 mt-1">💰 12,450 $MV</p>
           </div>
         )}
