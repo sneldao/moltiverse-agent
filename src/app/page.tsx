@@ -680,6 +680,7 @@ function MoltiverseApp() {
             <p className="text-[10px] text-cyan-400 mt-1">📊 5 Quests</p>
             <p className="text-[10px] text-green-400 mt-1">💎 3 Keys</p>
             <p className="text-[10px] text-purple-400 mt-1">🎫 6 Tickets</p>
+            <p className="text-[10px] text-orange-400 mt-1">⚔️ 12 Battles</p>
             <p className="text-[10px] text-amber-400 mt-1">💰 12,450 $MV</p>
           </div>
         )}
